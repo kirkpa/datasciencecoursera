@@ -32,6 +32,9 @@ run_analysis <- function () {
   selectedCols <- c("Subject", "Activity", grep("-mean()", colnames(combinedDS), value=TRUE), grep("-std()", colnames(combinedDS), value=TRUE))
   meanStdCols <- combinedDS[,selectedCols]
   s <- split(meanStdCols, list(meanStdCols$Subject, meanStdCols$Activity))
-  aggData <- sapply(s, function(x) colMeans(meanStdCols[,3:length(meanStdCols)]))  
+  aggData <- sapply(s, function(x) colMeans(meanStdCols[,3:length(meanStdCols)])) 
+  ##Write data to a file in csv format
+  write.table(tidyData, file = "UCI HAR Dataset/tidyData.csv", sep = ",", row.names = TRUE, col.names=TRUE)
+  aggData
 
 }
