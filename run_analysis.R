@@ -34,7 +34,7 @@ run_analysis <- function () {
   s <- split(meanStdCols, list(meanStdCols$Subject, meanStdCols$Activity))
   aggData <- sapply(s, function(x) colMeans(meanStdCols[,3:length(meanStdCols)])) 
   ##Write data to a file in csv format
-  write.table(tidyData, file = "UCI HAR Dataset/tidyData.csv", sep = ",", row.names = TRUE, col.names=TRUE)
+  write.table(aggData, file = "UCI HAR Dataset/tidyData.csv", sep = ",", row.names = TRUE, col.names=TRUE)
   aggData
 
 }
